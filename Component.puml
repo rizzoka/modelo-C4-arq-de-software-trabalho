@@ -1,0 +1,26 @@
+@startuml AppComponent
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+Container(api, "API Backend", "Spring Boot", "API REST para funcionalidades de backend") {
+    Component(controller, "Controlador REST", "Controlador Spring MVC", "Recebe requisições HTTP")
+    Component(service, "Serviço", "Classe de Serviço", "Contém lógica de negócio")
+    Component(repository, "Repositório", "Interface JPA", "Gerencia operações de banco de dados")
+    Component(dto, "DTO", "Interface JPA", "Transporta dados entre diferentes camadas")
+}
+
+Rel(controller, service, "Chamada de Métodos")
+Rel(service, repository, "Consulta ao BD")
+Rel(repository, dto, "Enviar e receber dados")
+
+Container(web, "Aplicação WEB", "Angular", "Frontend da aplicação") {
+    Component(serviceWeb, "Serviço", "Camada de Serviço", "Recebe os dados do back-end")
+    Component(repository, "Repositório", "Interface JPA", "Gerencia operações de banco de dados")
+}
+
+Container(api, "API Backend", "Spring Boot", "API REST para funcionalidades de backend") {
+    Component(controller, "Controlador REST", "Controlador Spring MVC", "Recebe requisições HTTP")
+    Component(service, "Serviço", "Classe de Serviço", "Contém lógica de negócio")
+    Component(repository, "Repositório", "Interface JPA", "Gerencia operações de banco de dados")
+}
+
+@enduml
