@@ -1,0 +1,11 @@
+@startuml AppContext
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+Person_Ext(professor, "Professor", "Professor que interage com o sistema")
+Person_Ext(adm, "Administrador", "Administrador que interage com o sistema")
+System(sistemaGestao, "Sistema de Controle e Disponibilidade de Professores", "Sistema que gerencia a disponibilidade de professores")
+
+Rel(professor, sistemaGestao, "Usa")
+Rel(adm, sistemaGestao, "Usa")
+
+@enduml
