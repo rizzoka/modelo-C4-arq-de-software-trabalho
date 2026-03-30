@@ -1,0 +1,17 @@
+@startuml AppContainer
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person_Ext(professor, "Professor", "Professor que interage com o sistema")
+Person_Ext(adm, "Administrador", "Administrador que interage com o sistema")
+Container(webapp, "Aplicação Web", "Angular", "Frontend da aplicação")
+Container(api, "API Backend", "Spring Boot", "API REST para funcionalidades de backend")
+Container(security, "Autenticação e Autorização", "Spring Security", "Fornece autenticação e autorização para acesso ao banco de dados")
+ContainerDb(database, "Banco de Dados", "PostgreSQL", "Armazena informações do sistema")
+
+Rel(professor, webapp, "Usa")
+Rel(adm, webapp, "Usa")
+Rel(webapp, api, "Requisições HTTP(S)")
+Rel(api, security, "Verifica")
+Rel(security, database, "SQL", "Usa")
+
+@enduml
